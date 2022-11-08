@@ -73,9 +73,14 @@ namespace LinqExercise
                 Console.WriteLine(person);
             }
             //TODO: Print the Sum and then the Average of the employees' YearsOfExperience if their YOE is less than or equal to 10 AND Age is greater than 35.
-
+            var LessThan10 = employees.Where(x => x.YearsOfExperience <= 10 && x.Age > 35);
+            Console.WriteLine($"Total YOE: {LessThan10.Sum(x =>x.YearsOfExperience)}");
+            Console.WriteLine($"Total YOE: {LessThan10.Average(x => x.YearsOfExperience)}");
             //TODO: Add an employee to the end of the list without using employees.Add()
+            Console.WriteLine("Add employee:");
+            employees = employees.Append(new Employee("Patrick", "Atienza", 29, 2)).ToList();
 
+            employees.ForEach(x => Console.WriteLine(x.FullName));
 
             Console.WriteLine();
 
